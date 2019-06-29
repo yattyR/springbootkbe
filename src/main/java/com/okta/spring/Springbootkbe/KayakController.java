@@ -7,6 +7,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 
 @Controller
 @RequestMapping(path = "/kayaks")
@@ -22,14 +26,21 @@ public class KayakController {
     @PostMapping()
     public @ResponseBody
     Mono<Kayak> addKayak(@RequestBody Kayak kayak) {
-	    logger.info("in post");
+	    logger.info(getTime()+"in post");
         return kayakRepository.save(kayak);
     }
 
     @GetMapping()
     public @ResponseBody
     Flux<Kayak> getAllKayaks() {
-	    logger.info("in get");
+	    logger.info(getTime()+"in get");
         Flux<Kayak> result = kayakRepository.findAll();
         return result;
-    }}
+    }
+    public static String getTime()
+{
+	 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+	return dateFormat.format(date);
+}
+}
