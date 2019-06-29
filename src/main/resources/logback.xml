@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <!-- Log file entry pattern -->
+    <property name="encoderPattern" value="%d{ISO8601} %-6r [%-3t] %-5p %c - %m%n" />
+    <!-- Rollover pattern (daily AM and PM) -->
+    <property name="rollingPolicyPattern" value="%d{yyyy-MM-dd-a}.%i" />
+    <!-- Force rollover if log file reaches max file size -->
+    <property name="maxFileSize" value="500MB" />
+    
+    <appender name="root" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <File>/var/log/root.log</File>
+        <encoder>
+            <pattern>${encoderPattern}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>/var/log/root.log.${rollingPolicyPattern}</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>    
+    <appender name="kayak" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <File>/var/log/kayak.log</File>
+        <encoder>
+            <pattern>${encoderPattern}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>/var/log/kayak.log.${rollingPolicyPattern}</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>        
+        </rollingPolicy>
+    </appender>
+    
+ 
+    
+    <!-- LOG level hierarchy: ALL, TRACE, DEBUG, INFO, WARN, ERROR, OFF -->
+    <logger name="kayak" additivity="false" level="INFO">
+        <appender-ref ref="kayak"/>
+    </logger>
+<logger name="root" additivity="false" level="INFO">
+        <appender-ref ref="root"/>
+    </logger>
+>>>>>>> rainbow
+</configuration>
