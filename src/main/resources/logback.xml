@@ -8,24 +8,24 @@
     <property name="maxFileSize" value="500MB" />
     
     <appender name="root" class="ch.qos.logback.core.rolling.RollingFileAppender">
-	    <File>/var/log/root.log</File>
+	    <File>/usr/share/log/root.log</File>
         <encoder>
             <pattern>${encoderPattern}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-		<fileNamePattern>/var/log/root.log.${rollingPolicyPattern}</fileNamePattern>
+		<fileNamePattern>/usr/share/log/root.log.${rollingPolicyPattern}</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>    
     <appender name="kayak" class="ch.qos.logback.core.rolling.RollingFileAppender">
-	    <File>/var/log/kayak.log</File>
+	    <File>/usr/share/log/kayak.log</File>
         <encoder>
             <pattern>${encoderPattern}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-		<fileNamePattern>/var/log/kayak.log.${rollingPolicyPattern}</fileNamePattern>
+		<fileNamePattern>/usr/share/log/kayak.log.${rollingPolicyPattern}</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>        
