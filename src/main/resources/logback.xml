@@ -5,7 +5,7 @@
     <!-- Rollover pattern (daily AM and PM) -->
     <property name="rollingPolicyPattern" value="%d{yyyy-MM-dd-a}.%i" />
     <!-- Force rollover if log file reaches max file size -->
-    <property name="maxFileSize" value="500MB" />
+    <property name="maxFileSize" value="100KB" />
     
     <appender name="root" class="ch.qos.logback.core.rolling.RollingFileAppender">
 	    <File>/usr/share/log/root.log</File>
