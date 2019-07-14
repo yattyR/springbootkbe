@@ -13,11 +13,13 @@ import java.util.Date;
 @Controller
 public class RootController {
 private static final Logger logger = LoggerFactory.getLogger("root");
+private static final Logger logger1 = LoggerFactory.getLogger("logstashTCPSocket");
 
     @GetMapping("/")
     @ResponseBody
     public Flux<String> getRoot() {
 	     logger.info(getTime()+"I am alive");
+	     logger1.info(getTime()+"ELK: I am alive");
         return Flux.just(getTime()+"Alive");
     }
     public static String getTime()

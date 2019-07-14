@@ -30,7 +30,16 @@
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>        
         </rollingPolicy>
-    </appender>
+</appender>
+<appender name="logstashTCPSocket" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>logstash:9999</destination>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<includeMdcKeyName>${HOSTNAME}</includeMdcKeyName>
+		</encoder>
+	</appender>
+	<appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+	</appender>
     
  
     
@@ -40,6 +49,9 @@
     </logger>
 <logger name="root" additivity="false" level="INFO">
         <appender-ref ref="root"/>
+</logger>
+<logger name="logstashTCPSocket" additivity="false" level="INFO">
+        <appender-ref ref="logstashTCPSocket"/>
     </logger>
 >>>>>>> rainbow
 </configuration>
